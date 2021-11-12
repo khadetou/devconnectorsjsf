@@ -126,6 +126,9 @@ img {
 .my-3 {
   margin: 3rem 0;
 }
+.mx {
+  margin: 0 0.5rem;
+}
 
 .btn {
   display: inline-block;
@@ -244,6 +247,10 @@ img {
   display: block;
   margin-top: 0.3rem;
   color: #888;
+}
+
+.form-inline{
+	display: inline-block;
 }
 
 .form input[type='text'],
@@ -568,7 +575,7 @@ button {
   .profile-about .skills {
     flex-direction: column;
   }
-
+	
   .dash-buttons a {
     display: block;
     width: 100%;

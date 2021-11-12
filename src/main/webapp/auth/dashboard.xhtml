@@ -5,7 +5,16 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:outputLabel value="Hello, world"/>
-   </f:view>
+  
+  <ui:include src="../head.xhtml"/>
+  <h:body>
+  	 <ui:include src="../nav.xhtml"/>
+  	 <section class="container">
+  	  <h1 class="large text-primary">Dashboard</h1>
+                <p class="lead">
+                    <i class="fas fa-user"></i> Welcome user and user.name
+                </p>
+  	 	<ui:include src="dashboardActions.xhtml"/>
+  	 </section>
+  </h:body>
 </html>
