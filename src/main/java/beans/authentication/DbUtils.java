@@ -44,7 +44,8 @@ public class DbUtils {
 		PreparedStatement myStmt = null;
 		
 		try {
-			if(theUser.getPassword() == theUser.getConfirmPassword()) {
+			
+			
 				myConn = getConnection();
 				String sql = "INSERT INTO user(name, email, password) value(?,?,?)";
 				myStmt = myConn.prepareStatement(sql);
@@ -53,9 +54,6 @@ public class DbUtils {
 				myStmt.setString(2, theUser.getEmail());
 				myStmt.setString(3, theUser.getPassword());
 				myStmt.execute();
-			}else {
-				throw new Exception("The password entered do not match!");
-			}
 			
 		}
 		finally{

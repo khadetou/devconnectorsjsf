@@ -20,11 +20,11 @@
    	 	
    	 	 <h:form class="form">
    	 	 	<div class="form-group">
-				 <h:inputText p:type="text" p:placeholder="Name" value="#{user.email}" />
+				 <h:inputText p:type="text" value="#{user.name}" p:placeholder="Name"  />
 			</div>
 			
 			<div class="form-group">
-				 <h:inputText p:type="email" p:placeholder="Email Address" value="#{user.email}" />
+				 <h:inputText p:type="email"  p:placeholder="Email Address" value="#{user.email}" />
 			</div>
 				
 			<div class="form-group">
@@ -32,10 +32,10 @@
 			</div>
 			
 			<div class="form-group">
-				 <h:inputSecret p:type="password" p:placeholder="Confirm Password" value="#{user.password}"/>
+				 <h:inputSecret p:type="password"  p:placeholder="Confirm Password" value="#{user.confirmPassword}"/>
 			</div>
 				
-			<h:commandButton value="Register" class="btn btn-primary" action="#{myBeans.logginAccount(user)}"/>
+			<h:commandButton value="Register" class="btn btn-primary" action="#{myBeans.addUser(user)}"/>
 		</h:form>
 		<p class="my-1">
 			<h:form>

@@ -39,6 +39,8 @@ public class MyBeans {
 	public String logginAccount(User theUser) {
 		logger.info("Login as user: "+theUser);
 		try {
+			//get user, logging user
+			userDbUtil.getUser(theUser);
 			
 		}catch(Exception exc) {
 			//Send this to the server logs
