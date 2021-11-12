@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+ 
+ 
+ 	<ui:component>
+ 		<nav class="navbar bg-dark">
+ 			<h1>
+	 			<h:form>
+	 			 <h:commandLink  action="index.xhtml">
+	 			 	<i class="fas fa-code"></i><h:outputText value="DevConnector"/>
+	 			 </h:commandLink>
+	 			</h:form>
+ 			</h1>
+ 			
+ 			<ul>
+	            <li>
+		            <h:form>
+				     	<h:commandLink  action="profile.xhtml">
+	 			 			<i class="fas fa-user a-icon"></i><h:outputText value="Developers"/>
+	 			 		</h:commandLink>
+				    </h:form>
+	            </li>
+	            
+	            <li>
+		            <h:form>
+				     	<h:commandLink  action="profile.xhtml">
+	 			 			<h:outputText value="Register"/>
+	 			 		</h:commandLink>
+				    </h:form>
+	            </li>
+        
+        
+        		<li>
+		            <h:form>
+				     	<h:commandLink  action="profile.xhtml">
+	 			 			<h:outputText value="Login"/>
+	 			 		</h:commandLink>
+				    </h:form>
+	            </li>
+	            
+	            
+	            <li>
+		            <h:form>
+				     	<h:commandLink  action="profile.xhtml">
+	 			 			<h:outputText value="Posts"/>
+	 			 		</h:commandLink>
+				    </h:form>
+	            </li>
+	            
+	            <li>
+		            <h:form>
+				     	<h:commandLink  action="profile.xhtml">
+	 			 			<h:outputText value="Dashboard"/>
+	 			 		</h:commandLink>
+				    </h:form>
+	            </li>
+	            
+	             <li>
+		            <h:form>
+				     	<h:commandLink  action="profile.xhtml">
+	 			 			<h:outputText value="Logout"/>
+	 			 		</h:commandLink>
+				    </h:form>
+	            </li>
+        	</ul>
+ 		</nav>
+ 	</ui:component>
+</html>
