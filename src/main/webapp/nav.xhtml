@@ -20,7 +20,7 @@
  			<ul>
 	            <li>
 		            <h:form>
-				     	<h:commandLink  action="profile.xhtml">
+				     	<h:commandLink  action="\profile.xhtml">
 	 			 			<i class="fas fa-user a-icon"></i><h:outputText value="Developers"/>
 	 			 		</h:commandLink>
 				    </h:form>
@@ -28,7 +28,7 @@
 	            
 	            <li>
 		            <h:form>
-				     	<h:commandLink  action="profile.xhtml">
+				     	<h:commandLink rendered="#{!myBeans.loggedIn}"  action="register.xhtml">
 	 			 			<h:outputText value="Register"/>
 	 			 		</h:commandLink>
 				    </h:form>
@@ -37,7 +37,7 @@
         
         		<li>
 		            <h:form>
-				     	<h:commandLink  action="profile.xhtml">
+				     	<h:commandLink rendered="#{!myBeans.loggedIn}" action="login.xhtml?faces-redirect=true">
 	 			 			<h:outputText value="Login"/>
 	 			 		</h:commandLink>
 				    </h:form>
@@ -46,7 +46,7 @@
 	            
 	            <li>
 		            <h:form>
-				     	<h:commandLink  action="profile.xhtml">
+				     	<h:commandLink rendered="#{myBeans.loggedIn}"  action="\post.xhtml">
 	 			 			<h:outputText value="Posts"/>
 	 			 		</h:commandLink>
 				    </h:form>
@@ -54,7 +54,7 @@
 	            
 	            <li>
 		            <h:form>
-				     	<h:commandLink  action="profile.xhtml">
+				     	<h:commandLink rendered="#{myBeans.loggedIn}"  action="auth\dashboard.xhtml">
 	 			 			<h:outputText value="Dashboard"/>
 	 			 		</h:commandLink>
 				    </h:form>
@@ -62,7 +62,7 @@
 	            
 	             <li>
 		            <h:form>
-				     	<h:commandLink  action="profile.xhtml">
+				     	<h:commandLink rendered="#{myBeans.loggedIn}"  action="#{myBeans.logoutUser}">
 	 			 			<h:outputText value="Logout"/>
 	 			 		</h:commandLink>
 				    </h:form>
