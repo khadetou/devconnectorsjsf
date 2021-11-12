@@ -10,62 +10,46 @@
  	<ui:component>
  		<nav class="navbar bg-dark">
  			<h1>
-	 			<h:form>
-	 			 <h:commandLink  action="index.xhtml">
-	 			 	<i class="fas fa-code"></i><h:outputText value="DevConnector"/>
-	 			 </h:commandLink>
-	 			</h:form>
+	 			
+	 			  <h:link  outcome="/index.xhtml">
+	 			  	<i class="fas fa-code"></i><h:outputText value="DevConnector"/>
+	 			  </h:link>
  			</h1>
  			
  			<ul>
 	            <li>
-		            <h:form>
-				     	<h:commandLink  action="\profile.xhtml">
-	 			 			<i class="fas fa-user a-icon"></i><h:outputText value="Developers"/>
-	 			 		</h:commandLink>
-				    </h:form>
+	             <h:link  outcome="/profiles.xhtml">
+	 			  	<i class="fas fa-user a-icon"></i><h:outputText value="Developers"/>
+	 			  </h:link>
 	            </li>
 	            
 	            <li>
-		            <h:form>
-				     	<h:commandLink rendered="#{!myBeans.loggedIn}"  action="register.xhtml">
-	 			 			<h:outputText value="Register"/>
-	 			 		</h:commandLink>
-				    </h:form>
+		         
+				    <h:link rendered="#{!myBeans.loggedIn}" value="Register" outcome="/register.xhtml"/>
 	            </li>
         
         
         		<li>
-		            <h:form>
-				     	<h:commandLink rendered="#{!myBeans.loggedIn}" action="login.xhtml?faces-redirect=true">
-	 			 			<h:outputText value="Login"/>
-	 			 		</h:commandLink>
-				    </h:form>
+		            
+				   <h:link rendered="#{!myBeans.loggedIn}" value="Login" outcome="/login.xhtml"/>
 	            </li>
 	            
 	            
-	            <li>
-		            <h:form>
-				     	<h:commandLink rendered="#{myBeans.loggedIn}"  action="\post.xhtml">
-	 			 			<h:outputText value="Posts"/>
-	 			 		</h:commandLink>
-				    </h:form>
-	            </li>
+	            <!-- <li>
+		 
+				    <h:link rendered="#{myBeans.loggedIn}" value="Post"  outcome="/post.xhtml"/>
+	            </li> -->
 	            
 	            <li>
-		            <h:form>
-				     	<h:commandLink rendered="#{myBeans.loggedIn}"  action="auth\dashboard.xhtml">
-	 			 			<h:outputText value="Dashboard"/>
-	 			 		</h:commandLink>
-				    </h:form>
+		        
+				    <h:link rendered="#{myBeans.loggedIn}" value="Dashboard" outcome="/auth/dashboard.xhtml"/>
 	            </li>
 	            
 	             <li>
-		            <h:form>
-				     	<h:commandLink rendered="#{myBeans.loggedIn}"  action="#{myBeans.logoutUser}">
-	 			 			<h:outputText value="Logout"/>
-	 			 		</h:commandLink>
-				    </h:form>
+					<h:form>
+						<h:commandLink rendered="#{myBeans.loggedIn}" value="Logout" action="#{myBeans.logoutUser}"/>
+					</h:form>
+				    
 	            </li>
         	</ul>
  		</nav>

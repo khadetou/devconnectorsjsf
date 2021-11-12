@@ -39,7 +39,7 @@ public class FilterAuth implements Filter {
 		// place your code here
 		if(((HttpServletRequest) request).getSession().getAttribute("uemail")==null) {
 			((HttpServletResponse) response).sendRedirect("../login.xhtml");
-		}else {
+		}else {	
 			// pass the request along the filter chain
 			chain.doFilter(request, response);
 		}

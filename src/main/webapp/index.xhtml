@@ -22,13 +22,17 @@
             </p>
             <div class="buttons">
             
-		            <h:form class="btn btn-primary">
-				     	<h:commandLink action="register.xhtml" value="Register" class="btn-primary" />
-				    </h:form>
 	        
-		            <h:form class="btn btn-light">
-				     	<h:commandLink  action="login.xhtml" value="Login" />
-				    </h:form>
+		            <h:link class="btn btn-primary" rendered="#{!myBeans.loggedIn}"  outcome="/register.xhtml" value="Register" />
+				    
+				    <h:link class="btn btn-light" rendered="#{!myBeans.loggedIn}"  outcome="/login.xhtml" value="Login" />
+	    
+
+				    <h:form class="btn btn-primary" rendered="#{myBeans.loggedIn}">
+						<h:commandLink class="btn-primary" action="#{myBeans.logoutUser}" value="Logout"/>
+					</h:form>
+				    <h:link class="btn btn-light" rendered="#{myBeans.loggedIn}" outcome="/auth/dashboard.xhtml" value="Dashboard" />
+				     
             </div>
           </div>
         </div>
