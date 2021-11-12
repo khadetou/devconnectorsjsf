@@ -11,5 +11,27 @@
  
  <h:body>
  	<ui:include src="nav.xhtml"/>
+ 	
+ 	 <section class="landing">
+        <div class="dark-overlay">
+          <div class="landing-inner">
+            <h1 class="x-large">Developer Connector</h1>
+            <p class="lead">
+              Create a developer profile/portfolio, share posts and get help from
+              other developers
+            </p>
+            <div class="buttons">
+            
+		            <h:form class="btn btn-primary">
+				     	<h:commandLink action="profile.xhtml" value="Register" class="btn-primary" />
+				    </h:form>
+	        
+		            <h:form class="btn btn-light">
+				     	<h:commandLink  action="profile.xhtml" value="Login" />
+				    </h:form>
+            </div>
+          </div>
+        </div>
+    </section>
  </h:body>
 </html>
