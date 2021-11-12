@@ -42,19 +42,23 @@ public class DbUtils {
 	public void addUser(User theUser) throws Exception{
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
-		
+		String password = (String)theUser.getPassword();
+		String confirmPassword =(String) theUser.getConfirmPassword();
 		try {
 			
-			
-				myConn = getConnection();
-				String sql = "INSERT INTO user(name, email, password) value(?,?,?)";
-				myStmt = myConn.prepareStatement(sql);
-				//Set the parameters
-				myStmt.setString(1, theUser.getName());
-				myStmt.setString(2, theUser.getEmail());
-				myStmt.setString(3, theUser.getPassword());
-				myStmt.execute();
-			
+				if(password.equals(confirmPassword)) {
+					myConn = getConnection();
+					String sql = "INSERT INTO user(name, email, password) value(?,?,?)";
+					myStmt = myConn.prepareStatement(sql);
+					//Set the parameters
+					myStmt.setString(1, theUser.getName());
+					myStmt.setString(2, theUser.getEmail());
+					myStmt.setString(3, theUser.getPassword());
+					myStmt.execute();
+				}else {
+					throw new Exception("The passwords do not match !");
+				}
+	
 		}
 		finally{
 			close(myConn, myStmt);
