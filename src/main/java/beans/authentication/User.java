@@ -4,8 +4,10 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class User {
+	private int id;
 	private String name;
 	private String email;
+	private String avatar;
 	private String password;
 	private String confirmPassword;
 	
@@ -14,10 +16,11 @@ public class User {
 		
 	}
 	
-	public User(String name, String email, String password) {
+	public User(int id, String name, String email, String avatar) {
+		this.id = id;
 		this.name = name;
+		this.avatar = avatar;
 		this.email = email;
-		this.password = password;
 	}
 	
 	public String getConfirmPassword() {
@@ -54,5 +57,21 @@ public class User {
                 ", confirmPassword='" + confirmPassword + '\'' +
                 '}';
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
 
 }
