@@ -30,9 +30,9 @@
 			<h:commandButton value="Login" class="btn btn-primary" action="#{myBeans.logginAccount(user)}"/>
 		</h:form>
 		<p class="my-1">
-			<h:form>
-				Don't have an account? <h:commandLink value="Sign up" action="/register.xhtml?faces-redirect=true"/>
-			</h:form>
+	
+				Don't have an account? <h:link value="Sign up" outcome="/register.xhtml/>
+			
 		</p>
    	 </section>
    </h:body>
