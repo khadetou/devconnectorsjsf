@@ -47,9 +47,11 @@
 	            
 	             <li>
 					<h:form>
-						<h:commandLink rendered="#{myBeans.loggedIn}" value="Logout" action="#{myBeans.logoutUser}"/>
+						<h:commandLink rendered="#{myBeans.loggedIn}"  action="#{myBeans.logoutUser}">
+							<i class="fas fa-sign-out-alt a-icon"></i><h:outputText value="Logout"/>
+						</h:commandLink>
+						
 					</h:form>
-				    
 	            </li>
         	</ul>
  		</nav>
