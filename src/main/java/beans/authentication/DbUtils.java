@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -45,7 +46,7 @@ public class DbUtils {
 		String password = (String)theUser.getPassword();
 		String confirmPassword =(String) theUser.getConfirmPassword();
 		try {
-			
+				checkEmail(theUser.getEmail());
 				if(password.equals(confirmPassword)) {
 					myConn = getConnection();
 					String sql = "INSERT INTO user(name, email, password) value(?,?,?)";
@@ -65,8 +66,32 @@ public class DbUtils {
 		}
 	}
 	
-	//GET USER || LOGGIN USER
-	public User getUser(User theUser) throws Exception {
+	//CHECK EMAIL
+	public void checkEmail(String email) throws Exception{
+		Connection myConn = null ;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		try {
+			myConn = getConnection();
+			String sql = "SELECT * FROM user WHERE email=?";
+			
+			myStmt = myConn.prepareStatement(sql);
+			
+			myStmt.setString(1, email);
+			myRs = myStmt.executeQuery();
+			if(myRs.next()) {
+				throw new Exception("A user with this email already exist!");
+			}
+		}finally {
+			close(myConn, myStmt, myRs);
+		}
+		
+		
+	}
+	
+	// LOGGIN USER
+	public User loginUser(User theUser) throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRs = null;
@@ -87,7 +112,7 @@ public class DbUtils {
 				String name = myRs.getString("name");
 				String email = myRs.getString("email");
 				String avatar = myRs.getString("avatar");
-				
+
 				user = new User(id, name, email, avatar);
 			}else {
 				throw new Exception("Your email or your password is incorrect !");
@@ -98,6 +123,39 @@ public class DbUtils {
 			return user;
 		}
 		finally {
+			close(myConn, myStmt, myRs);
+		}
+	}
+	
+	//GET THE CONNECTED USER
+	public User getUser(String email) throws Exception{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		try {
+			myConn = getConnection();
+			String sql = "SELECT * FROM user WHERE email=?";
+			
+			myStmt = myConn.prepareStatement(sql);
+			
+			myStmt.setString(1, email);
+			myRs = myStmt.executeQuery();
+			User theUser = null;
+			if(myRs.next()) {
+				int id = myRs.getInt("id");
+				String name = myRs.getString("name");
+				String mail = myRs.getString("email");
+				String avatar = myRs.getString("avatar");
+				
+				theUser = new User(id, name, mail, avatar);
+			}else {
+				throw new Exception("Could not find user email: " + email);
+			}
+			
+			return theUser;
+		}
+		finally{
 			close(myConn, myStmt, myRs);
 		}
 	}

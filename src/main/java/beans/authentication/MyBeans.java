@@ -1,5 +1,6 @@
 package beans.authentication;
 
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,14 +13,16 @@ import javax.servlet.http.HttpSession;
 @ManagedBean
 @SessionScoped
 public class MyBeans {
-	private User user;
+	private User userInfo;
 	private DbUtils userDbUtil;
 	private Logger logger = Logger.getLogger(getClass().getName());
 	
 	public MyBeans() throws Exception{
-		user = new User();
+		userInfo = new User();
 		userDbUtil = DbUtils.getInstance();
 	}
+	
+	
 	
 	//ADD USER || REGISTER USER
 	public String addUser(User theUser) {
@@ -35,13 +38,14 @@ public class MyBeans {
 		}
 		return "login.xhtml?faces-redirect=true";
 	}
-	//LOGGIN USER || GET USER
+	
+	//LOGGIN USER && GET THE USER
 	public String logginAccount(User theUser) {
 		logger.info("Login as user: "+theUser);
 		try {
 			//get user, logging user
-			userDbUtil.getUser(theUser);
-			
+			userDbUtil.loginUser(theUser);
+
 		}catch(Exception exc) {
 			//Send this to the server logs
 			logger.log(Level.SEVERE, "Error getting user login ");
@@ -51,10 +55,32 @@ public class MyBeans {
 		return "auth/dashboard.xhtml?faces-redirect=true";
 	}
 	
+	public User getUser() {
+		return userInfo;
+	}
+	
+	public void loadUser() {
+		logger.info("Loading user");
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		try {
+			//get user, logging user
+			if(session != null) {
+				String email = (String) session.getAttribute("uemail");
+				userInfo = userDbUtil.getUser(email);
+			}
+
+		}catch(Exception exc) {
+			//Send this to the server logs
+			logger.log(Level.SEVERE, "Error getting user login ");
+			addErrorMessage(exc);
+		}
+	}
+	
 	public boolean isLoggedIn() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		if(session != null) {
 			String username = (String) session.getAttribute("uemail");
+			
 			if(username != null) {
 				return true;
 			}

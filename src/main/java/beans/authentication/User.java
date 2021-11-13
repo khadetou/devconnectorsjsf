@@ -18,10 +18,11 @@ public class User {
 	
 	public User(int id, String name, String email, String avatar) {
 		this.id = id;
-		this.name = name;
-		this.avatar = avatar;
+		this.name= name;
 		this.email = email;
+		this.avatar = avatar;
 	}
+	
 	
 	public String getConfirmPassword() {
 		return confirmPassword;
@@ -47,17 +48,6 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", confirmPassword='" + confirmPassword + '\'' +
-                '}';
-    }
-
 	public int getId() {
 		return id;
 	}
@@ -73,5 +63,18 @@ public class User {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
+	
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", password='" + password + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                '}';
+    }
 
 }

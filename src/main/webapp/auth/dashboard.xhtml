@@ -10,9 +10,9 @@
   <h:body>
   	 <ui:include src="../nav.xhtml"/>
   	 <section class="container">
-  	  <h1 class="large text-primary">Dashboard</h1>
+  	  <h1 class="large text-primary" >Dashboard</h1>
                 <p class="lead">
-                    <i class="fas fa-user"></i> Welcome user and user.name
+                    <i class="fas fa-user"></i> Welcome #{myBeans.user.name}
                 </p>
   	 	<ui:include src="dashboardActions.xhtml"/>
   	 	<ui:include src="education.xhtml"/>
@@ -24,10 +24,10 @@
 	  	 	  </h:commandLink>
 	  	 	 </h:form>
   	 	</div>
-  	 	<h:form>
+  	 
   	 		<p>You have not yet setup a profile please add some info</p>
-  	 		<h:commandLink value="Create  Profile" class="btn btn-primary my-1"/>
-  	 	</h:form>
+  	 		<h:link value="Create  Profile" class="btn btn-primary my-1" outcome="/auth/create-profile.xhtml"/>
+  	 	
   	 </section>
   </h:body>
 </html>
