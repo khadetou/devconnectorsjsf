@@ -4,11 +4,119 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      >
   
   <ui:include src="../head.xhtml"/>
   <h:body>
   	<ui:include src="../nav.xhtml" />
-  	<h1>Create profile</h1>
+  	    <section class="container">
+   
+      <h1 class="large text-primary">
+        Create Your Profile
+      </h1>
+      <p class="lead">
+        <i class="fas fa-user"></i> Let's get some information to make your
+        profile stand out
+      </p>
+      <small>* = required field</small>
+      <h:form class="form" >
+        <div class="form-group">
+          <h:selectOneMenu  value="#{profile.status}">
+            <f:selectItem itemValue="* Select Professional Status" itemLable="* Select Professional Status"/>
+            <f:selectItem itemValue="Developer" itemLable="Developer"/>
+            <f:selectItem itemValue="Junior Developer" itemLabel="Junior Developer"/>
+            <f:selectItem itemValue="Senior Developer" itemLabel="Senior Developer"/>
+            <f:selectItem itemValue="Manager" itemLabel="Manager"/>
+            <f:selectItem itemValue="Student or Learning" itemLabel="Student or Learning"/>
+            <f:selectItem itemValue="Instructor" itemLabel="Instructor"/>
+            <f:selectItem itemValue="Intern" itemLabel="Intern"/>
+            <f:selectItem itemValue="Other" itemLabel="Other"/>
+          </h:selectOneMenu>
+          <small class="form-text"
+            >Give us an idea of where you are at in your career</small
+          >
+        </div>
+        <div class="form-group">
+          <h:inputText type="text" p:placeholder="Company"  value="#{profile.company}" />
+          <small class="form-text"
+            >Could be your own company or one you work for</small
+          >
+        </div>
+        <div class="form-group">
+          <h:inputText type="text" p:placeholder="Website" value="#{profile.website}" />
+          <small class="form-text"
+            >Could be your own or a company website</small
+          >
+        </div>
+        <div class="form-group">
+          <h:inputText type="text" p:placeholder="Location"  value="#{profile.location}" />
+          <small class="form-text"
+            >City  state suggested (eg. Boston, MA)</small
+          >
+        </div>
+        <div class="form-group">
+          <h:inputText type="text" p:placeholder="* Skills"  value="#{profile.skills}"  />
+          <small class="form-text"
+            >Please use comma separated values (eg.
+            HTML,CSS,JavaScript,PHP)</small
+          >
+        </div>
+        <div class="form-group">
+          <h:inputText
+            type="text"
+            p:placeholder="Github Username"
+            name="githubusername"
+            value="#{profile.githubusername}" 
+          />
+          <small class="form-text"
+            >If you want your latest repos and a Github link, include your
+            username</small
+          >
+        </div>
+        <div class="form-group">
+          <h:inputTextarea p:placeholder="A short bio of yourself" value="#{profile.bio}"/>
+          <small class="form-text">Tell us a little about yourself</small>
+        </div>
+
+        <div class="my-2">
+          <button type="button"  class="btn btn-light">
+            Add Social Network Links
+          </button>
+          <span>Optional</span>
+        </div>
+
+
+        <div class="form-group social-input">
+          <i class="fab fa-twitter fa-2x"></i>
+          <h:inputText type="text" p:placeholder="Twitter URL" value="#{profile.twitter}" />
+        </div>
+
+        <div class="form-group social-input">
+          <i class="fab fa-facebook fa-2x"></i>
+          <h:inputText type="text" p:placeholder="Facebook URL"  value="#{profile.facebook}"  />
+        </div>
+
+        <div class="form-group social-input">
+          <i class="fab fa-youtube fa-2x"></i>
+          <h:inputText type="text" p:placeholder="YouTube URL" value="#{profile.youtube}"  />
+        </div>
+
+        <div class="form-group social-input">
+          <i class="fab fa-linkedin fa-2x"></i>
+          <h:inputText type="text" p:placeholder="Linkedin URL" value="#{profile.linkedin}" />
+        </div>
+
+        <div class="form-group social-input">
+          <i class="fab fa-instagram fa-2x"></i>
+          <h:inputText type="text" p:placeholder="Instagram URL"  value="#{profile.instagram}"  />
+        </div>
+
+
+        <h:commandButton class="btn btn-primary my-1"  value="Submit"/>
+        <h:link class="btn btn-light my-1" outcome="/dashboard.xhtml" value="Go Back"/>
+      </h:form>
+    </section>
   </h:body>
 </html>
