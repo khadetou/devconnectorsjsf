@@ -104,8 +104,13 @@ public class ProfileDbUtil {
 					String skills = myRs.getString("skills");
 					String bio = myRs.getString("bio");
 					String githubusername = myRs.getString("githubusername");
+					String twitter = myRs.getString("twitter");
+					String youtube = myRs.getString("youtube");
+					String facebook = myRs.getString("facebook");
+					String linkedin= myRs.getString("linkedin");
+					String instagram = myRs.getString("instagram");
 					
-					theProfile = new Profile(id, user_id, company, status, website, location, skills, bio, githubusername);
+					theProfile = new Profile(id, user_id, company, status, website, location, skills, bio, githubusername, twitter, youtube, facebook, linkedin, instagram);
 				}else {
 					throw new Exception("Could not find user email: " + email);
 				}
@@ -207,9 +212,14 @@ public class ProfileDbUtil {
 					String skills = myRs.getString("skills");
 					String bio = myRs.getString("bio");
 					String githubusername = myRs.getString("githubusername");
+					String twitter = myRs.getString("twitter");
+					String youtube = myRs.getString("youtube");
+					String facebook = myRs.getString("facebook");
+					String linkedin= myRs.getString("linkedin");
+					String instagram = myRs.getString("instagram");
 					
 					//CREATE A NEW PROFILE
-					Profile tempProfile = new Profile(id, user_id, company, status, website, location, skills, bio, githubusername);
+					Profile tempProfile = new Profile(id, user_id, company, status, website, location, skills, bio, githubusername, twitter, youtube, facebook, linkedin, instagram);
 					//ADD IT TO THE LIST OF PROFILES
 					profiles.add(tempProfile);
 				}
