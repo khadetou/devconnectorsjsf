@@ -86,7 +86,7 @@ public class ProfileDbUtil {
 			
 			try {
 				myConn = getConnection();
-				String sql = "SELECT * FROM profile WHERE email=?";
+				String sql = "SELECT * FROM profile LEFT JOIN socials ON profile.id = profile_id WHERE email=?";
 				
 				myStmt = myConn.prepareStatement(sql);
 				
@@ -140,7 +140,7 @@ public class ProfileDbUtil {
 				myStmt.setString(6, theProfile.getSkills());
 				myStmt.setString(7, theProfile.getBio());
 				myStmt.setString(8, theProfile.getGithubusername());
-				
+
 				myStmt.execute();
 				
 				return true;
@@ -190,7 +190,7 @@ public class ProfileDbUtil {
 			try {
 				myConn = getConnection();
 				
-				String sql = "SELECT * FROM profile";
+				String sql = "SELECT * FROM profile LEFT JOIN socials ON profile.id = profile_id";
 				
 				myStmt = myConn.createStatement();
 				myRs = myStmt.executeQuery(sql);

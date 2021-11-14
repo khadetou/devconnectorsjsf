@@ -24,7 +24,7 @@ public class Profile {
 		
 	}
 	
-	public Profile(int id, int user_id, String company, String status, String website, String location, String skills, String bio, String githubusername) {
+	public Profile(int id, int user_id, String company, String status, String website, String location, String skills, String bio, String githubusername, String twitter, String youtube, String facebook, String instagram, String linkedin  ) {
 		this.id = id;
 		this.user_id = user_id;
 		this.status = status;
@@ -33,6 +33,11 @@ public class Profile {
 		this.skills = skills;
 		this.bio = bio;
 		this.githubusername = githubusername;
+		this.twitter = twitter;
+		this.youtube = youtube;
+		this.facebook = facebook;
+		this.linkedin = linkedin;
+		this.instagram = instagram;
 	}
 	
 	public String getStatus() {
@@ -149,7 +154,7 @@ public class Profile {
 	
     @Override
     public String toString() {
-        return "Profile{" +
+        return "User{" +
                 "id=" + id +
                 ", user_id=" + user_id +
                 ", status='" + status + '\'' +
@@ -159,6 +164,11 @@ public class Profile {
                 ", skills='" + skills + '\'' +
                 ", githubusername='" + githubusername + '\'' +
                 ", bio='" + bio + '\'' +
+                ", twitter='" + twitter + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", youtube='" + youtube + '\'' +
+                ", linkedin='" + linkedin + '\'' +
+                ", instagram='" + instagram + '\'' +
                 '}';
     }
 
