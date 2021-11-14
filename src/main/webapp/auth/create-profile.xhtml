@@ -114,7 +114,8 @@
         </div>
 
 
-        <h:commandButton class="btn btn-primary my-1"  value="Submit"/>
+        <h:commandButton class="btn btn-primary my-1"  value="Submit" action="#{profileController.createProfile(profile)}"/>
+        
         <h:link class="btn btn-light my-1" outcome="/auth/dashboard.xhtml" value="Go Back"/>
       </h:form>
     </section>
