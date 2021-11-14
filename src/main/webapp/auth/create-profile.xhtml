@@ -90,31 +90,31 @@
 
         <div class="form-group social-input">
           <i class="fab fa-twitter fa-2x"></i>
-          <h:inputText type="text" p:placeholder="Twitter URL" value="#{profile.twitter}" />
+          <h:inputText type="text" p:placeholder="Twitter URL" value="#{socials.twitter}" />
         </div>
 
         <div class="form-group social-input">
           <i class="fab fa-facebook fa-2x"></i>
-          <h:inputText type="text" p:placeholder="Facebook URL"  value="#{profile.facebook}"  />
+          <h:inputText type="text" p:placeholder="Facebook URL"  value="#{socials.facebook}"  />
         </div>
 
         <div class="form-group social-input">
           <i class="fab fa-youtube fa-2x"></i>
-          <h:inputText type="text" p:placeholder="YouTube URL" value="#{profile.youtube}"  />
+          <h:inputText type="text" p:placeholder="YouTube URL" value="#{socials.youtube}"  />
         </div>
 
         <div class="form-group social-input">
           <i class="fab fa-linkedin fa-2x"></i>
-          <h:inputText type="text" p:placeholder="Linkedin URL" value="#{profile.linkedin}" />
+          <h:inputText type="text" p:placeholder="Linkedin URL" value="#{socials.linkedin}" />
         </div>
 
         <div class="form-group social-input">
           <i class="fab fa-instagram fa-2x"></i>
-          <h:inputText type="text" p:placeholder="Instagram URL"  value="#{profile.instagram}"  />
+          <h:inputText type="text" p:placeholder="Instagram URL"  value="#{socials.instagram}"  />
         </div>
 
 
-        <h:commandButton class="btn btn-primary my-1"  value="Submit" action="#{profileController.createProfile(profile)}"/>
+        <h:commandButton class="btn btn-primary my-1"  value="Submit" action="#{profileController.createProfile(profile, socials)}"/>
         
         <h:link class="btn btn-light my-1" outcome="/auth/dashboard.xhtml" value="Go Back"/>
       </h:form>

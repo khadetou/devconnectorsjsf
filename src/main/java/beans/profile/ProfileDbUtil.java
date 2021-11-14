@@ -77,11 +77,49 @@ public class ProfileDbUtil {
 				close(myConn, myStmt, myRs);
 			}
 		}
+		
 		//GET THE CONNECTED PROFILE USER
+		public Profile getCurrentProfile(String email) throws Exception{
+			Connection myConn = null;
+			PreparedStatement myStmt = null;
+			ResultSet myRs = null;
+			
+			try {
+				myConn = getConnection();
+				String sql = "SELECT * FROM profile WHERE email=?";
+				
+				myStmt = myConn.prepareStatement(sql);
+				
+				myStmt.setString(1, email);
+				myRs = myStmt.executeQuery();
+				Profile theProfile = null;
+				if(myRs.next()) {
+					//RETRIEVE DATA FROM RESULT SET ROW
+					int id = myRs.getInt("id");
+					int user_id = myRs.getInt("user_id");
+					String company = myRs.getString("company");
+					String website = myRs.getString("website");
+					String location = myRs.getString("location");
+					String status = myRs.getString("status");
+					String skills = myRs.getString("skills");
+					String bio = myRs.getString("bio");
+					String githubusername = myRs.getString("githubusername");
+					
+					theProfile = new Profile(id, user_id, company, status, website, location, skills, bio, githubusername);
+				}else {
+					throw new Exception("Could not find user email: " + email);
+				}
+				
+				return theProfile;
+			}
+			finally{
+				close(myConn, myStmt, myRs);
+			}
+		}
 		
 		//CREATE A PROFILE 
 			
-		public void createProfile(Profile theProfile) throws Exception {
+		public boolean createProfile(Profile theProfile) throws Exception {
 			Connection myConn = null;
 			PreparedStatement myStmt = null;
 			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
@@ -104,12 +142,43 @@ public class ProfileDbUtil {
 				myStmt.setString(8, theProfile.getGithubusername());
 				
 				myStmt.execute();
+				
+				return true;
 			}
 			finally {
 				close(myConn, myStmt);
 			}
 		}
 		
+		//CREATE SOCIALS
+		public void createSocials(Socials theSocials) throws Exception {
+			Connection myConn = null;
+			PreparedStatement myStmt = null;
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+			String email = (String) session.getAttribute("uemail");
+			try {
+				myConn = getConnection();
+				
+				String sql = "INSERT INTO profile (user_id, company, website, location, status, skills, bio, githubusername) values(?, ?, ?, ?, ?, ?, ?, ?)";
+				
+				myStmt = myConn.prepareStatement(sql);
+				
+				//SET PARAMS
+				myStmt.setInt(1, getCurrentProfile(email).getId());
+				myStmt.setString(2, theSocials.getYoutube());
+				myStmt.setString(3, theSocials.getTwitter());
+				myStmt.setString(4, theSocials.getFacebook());
+				myStmt.setString(5, theSocials.getLinkedin());
+				myStmt.setString(6, theSocials.getInstagram());
+				
+				myStmt.execute();
+			}
+			finally {
+				close(myConn, myStmt);
+			}
+		}
+		
+		//GET ALL PROFILES 
 		//GET ALL PROFILES
 		public	List<Profile> getProfiles() throws Exception{
 			List<Profile> profiles = new ArrayList<>();

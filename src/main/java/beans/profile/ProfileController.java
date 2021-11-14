@@ -24,11 +24,14 @@ public class ProfileController {
 	}
 	
 	//CREATE PROFILE
-	public String createProfile(Profile theProfile) {
+	public String createProfile(Profile theProfile, Socials theSocials) {
 		logger.info("Adding profile: "+ theProfile);
 		try {
 			//ADD PROFILE TO THE DATABASE
-			profileDbUtil.createProfile(theProfile);
+			boolean result = profileDbUtil.createProfile(theProfile);
+			if(result) {
+				profileDbUtil.createSocials(theSocials);
+			}
 		}catch(Exception exc) {
 			//SEND THIS TO SERVER LOGS
 			logger.log(Level.SEVERE, "Error adding profile", exc);
