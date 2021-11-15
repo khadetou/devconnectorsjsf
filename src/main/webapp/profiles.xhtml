@@ -30,7 +30,7 @@
 				                <p>#{item.status} <span>at #{item.company}</span></p>
 				                <p class="my-1"> <span>#{item.location}</span></p>
 				                <h:form>
-				                	<h:commandLink action="index.xhtml" value="View profile" class="btn btn-primary"/>
+				                	<h:commandLink action="#{profileController.loadProfile(item.id)}" value="View profile" class="btn btn-primary"/>
 				            	</h:form>
 				            </div>
 				            <ul>
