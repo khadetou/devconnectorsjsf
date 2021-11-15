@@ -114,7 +114,9 @@ public class ProfileDbUtil {
 					String linkedin= myRs.getString("linkedin");
 					String instagram = myRs.getString("instagram");
 					
+					
 					theProfile = new Profile(id, user_id, social_id, name, mail, avatar, company, status, website, location, skills, bio, githubusername, twitter, youtube, facebook, linkedin, instagram);
+					
 				}else {
 					throw new Exception("Could not find user email: " + email);
 				}
@@ -226,9 +228,10 @@ public class ProfileDbUtil {
 					String linkedin= myRs.getString("linkedin");
 					String instagram = myRs.getString("instagram");
 					
-					
+					System.out.println("COMPANY: "+company);
 					//CREATE A NEW PROFILE
 					Profile tempProfile = new Profile(id, user_id, social_id, name, mail, avatar, company, status, website, location, skills, bio, githubusername, twitter, youtube, facebook, linkedin, instagram);
+					System.out.println("COMPANY: "+tempProfile.getCompany());
 					//ADD IT TO THE LIST OF PROFILES
 					profiles.add(tempProfile);
 				}

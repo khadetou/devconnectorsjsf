@@ -20,21 +20,22 @@
                     <i class="fab fa-connectdevelop"></i>
                     Browse and connect with developers
                 </p>
+                #{profileController.profiles}
                 <div class="profiles">
                    <ui:repeat var="item" value="#{profileController.profiles}">
                        <div class="profile bg-light">
 	                      <!--   <img src={avatar} alt="" class="round-img" />-->
 				            <div>
-				                <h2>{name}</h2>
-				                <p>{status} {company <span>at {company}</span>}</p>
-				                <p class="my-1">{location <span>{location}</span>}</p>
+				                <h2>#{item.name}</h2>
+				                <p>#{item.status} <span>at #{item.company}</span></p>
+				                <p class="my-1"> <span>#{item.location}</span></p>
 				                <h:commandLink action="index.xhtml" value="View profile" class="btn btn-primary"/>
 				            </div>
 				            <ul>
 				                
 				                <ui:repeat var="" value="">
 					                <li class='text-primary'>
-					                    <i class="fas fa-check"></i>{skill}
+					                    <i class="fas fa-check"></i>#{item.skills}
 					                </li>
 				                </ui:repeat>
 				          

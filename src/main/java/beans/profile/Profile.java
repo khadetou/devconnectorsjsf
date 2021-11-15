@@ -35,6 +35,7 @@ public class Profile {
 		this.name = name;
 		this.email = email;
 		this.avatar = avatar;
+		this.company = company;
 		this.status = status;
 		this.website = website;
 		this.location = location;
