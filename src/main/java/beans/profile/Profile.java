@@ -6,6 +6,10 @@ import javax.faces.bean.ManagedBean;
 public class Profile {
 	private int id;
 	private int user_id;
+	private int social_id;
+	private String name;
+	private String email;
+	private String avatar;
 	private String status;
 	private String website;
 	private String location;
@@ -24,9 +28,13 @@ public class Profile {
 		
 	}
 	
-	public Profile(int id, int user_id, String company, String status, String website, String location, String skills, String bio, String githubusername, String twitter, String youtube, String facebook, String instagram, String linkedin  ) {
+	public Profile(int id, int user_id, int social_id, String name, String email, String avatar, String company, String status, String website, String location, String skills, String bio, String githubusername, String twitter, String youtube, String facebook, String instagram, String linkedin  ) {
 		this.id = id;
 		this.user_id = user_id;
+		this.social_id = social_id;
+		this.name = name;
+		this.email = email;
+		this.avatar = avatar;
 		this.status = status;
 		this.website = website;
 		this.location = location;
@@ -152,11 +160,50 @@ public class Profile {
 		this.user_id = user_id;
 	}
 	
+  
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public int getSocial_id() {
+		return social_id;
+	}
+
+	public void setSocial_id(int social_id) {
+		this.social_id = social_id;
+	}
+	
+	
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", user_id=" + user_id +
+                ", social_id=" + social_id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", avatar='" + avatar + '\'' +
                 ", status='" + status + '\'' +
                 ", website='" + website + '\'' +
                 ", location='" + location + '\'' +

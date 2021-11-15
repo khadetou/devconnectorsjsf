@@ -7,6 +7,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
   <ui:include src="head.xhtml"/>
   
+  <f:metadata>
+  	<f:event type="preRenderView" listener="#{profileController.loadProfiles()}"/>
+  </f:metadata>
+  
   <h:body>
   	<ui:include src="nav.xhtml"/>
   		<section class="container">
@@ -17,7 +21,7 @@
                     Browse and connect with developers
                 </p>
                 <div class="profiles">
-                   <ui:repeat var="" value="">
+                   <ui:repeat var="item" value="#{profileController.profiles}">
                        <div class="profile bg-light">
 	                      <!--   <img src={avatar} alt="" class="round-img" />-->
 				            <div>
@@ -42,6 +46,6 @@
        
        }
         </section>
-  		D:\Udemy\Ionic\ionic+react\09-handling user input\01.mp4
+  		D:\Udemy\Ionic\ionic+react\10-using-native-features\01.mp4
   </h:body>
 </html>

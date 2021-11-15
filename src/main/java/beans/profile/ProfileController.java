@@ -51,7 +51,7 @@ public class ProfileController {
 		return profiles;
 	}
 	
-	public void loadProfile() {
+	public void loadProfiles() {
 		logger.info("Loading profiles");
 		profiles.clear();
 		
