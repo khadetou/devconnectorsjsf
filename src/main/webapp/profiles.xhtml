@@ -20,7 +20,7 @@
                     <i class="fab fa-connectdevelop"></i>
                     Browse and connect with developers
                 </p>
-                #{profileController.profiles}
+              
                 <div class="profiles">
                    <ui:repeat var="item" value="#{profileController.profiles}">
                        <div class="profile bg-light">
@@ -29,7 +29,9 @@
 				                <h2>#{item.name}</h2>
 				                <p>#{item.status} <span>at #{item.company}</span></p>
 				                <p class="my-1"> <span>#{item.location}</span></p>
-				                <h:commandLink action="index.xhtml" value="View profile" class="btn btn-primary"/>
+				                <h:form>
+				                	<h:commandLink action="index.xhtml" value="View profile" class="btn btn-primary"/>
+				            	</h:form>
 				            </div>
 				            <ul>
 				                
@@ -45,8 +47,8 @@
 	                  <h4>No profiles found</h4>
 	               </div>
        
-       }
+  
         </section>
-  		D:\Udemy\Ionic\ionic+react\12-publishing the apps\01.mp4
+
   </h:body>
 </html>

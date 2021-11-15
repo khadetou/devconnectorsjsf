@@ -228,10 +228,9 @@ public class ProfileDbUtil {
 					String linkedin= myRs.getString("linkedin");
 					String instagram = myRs.getString("instagram");
 					
-					System.out.println("COMPANY: "+company);
 					//CREATE A NEW PROFILE
 					Profile tempProfile = new Profile(id, user_id, social_id, name, mail, avatar, company, status, website, location, skills, bio, githubusername, twitter, youtube, facebook, linkedin, instagram);
-					System.out.println("COMPANY: "+tempProfile.getCompany());
+		
 					//ADD IT TO THE LIST OF PROFILES
 					profiles.add(tempProfile);
 				}
@@ -243,6 +242,54 @@ public class ProfileDbUtil {
 		
 		
 		//GET A SINGLE PROFILE
+		public Profile getProfile(int profileId) throws Exception {
+			Connection myConn = null;
+			PreparedStatement myStmt = null;
+			ResultSet myRs = null;
+			
+			try {
+				myConn = getConnection();
+				String sql = "SELECT profile.id, profile.company, profile.status, profile.bio,profile.githubusername,profile.location, profile.skills,profile.user_id,profile.website,user.name,user.email,user.avatar,social.id as social_id,social.facebook, social.instagram,social.linkedin,social.twitter,social.youtube FROM profile INNER JOIN user ON profile.user_id = user.id LEFT JOIN social ON social.profile_id = profile.id  WHERE profile.id=?";
+				
+				myStmt = myConn.prepareStatement(sql);
+				
+				myStmt.setInt(1, profileId);
+				myRs = myStmt.executeQuery();
+				Profile theProfile = null;
+				if(myRs.next()) {
+					//RETRIEVE DATA FROM RESULT SET ROW
+					int id = myRs.getInt("id");
+					int user_id = myRs.getInt("user_id");
+					int social_id = myRs.getInt("social_id");
+					String name = myRs.getString("name");
+					String mail = myRs.getString("email");
+					String avatar = myRs.getString("avatar");
+					String company = myRs.getString("company");
+					String website = myRs.getString("website");
+					String location = myRs.getString("location");
+					String status = myRs.getString("status");
+					String skills = myRs.getString("skills");
+					String bio = myRs.getString("bio");
+					String githubusername = myRs.getString("githubusername");
+					String twitter = myRs.getString("twitter");
+					String youtube = myRs.getString("youtube");
+					String facebook = myRs.getString("facebook");
+					String linkedin= myRs.getString("linkedin");
+					String instagram = myRs.getString("instagram");
+					
+					
+					theProfile = new Profile(id, user_id, social_id, name, mail, avatar, company, status, website, location, skills, bio, githubusername, twitter, youtube, facebook, linkedin, instagram);
+					
+				}else {
+					throw new Exception("Could not find profile id: " + profileId);
+				}
+				
+				return theProfile;
+			}
+			finally{
+				close(myConn, myStmt, myRs);
+			}
+		}
 		
 		//CREATE AN EXPERIENCE PROFILE
 		
