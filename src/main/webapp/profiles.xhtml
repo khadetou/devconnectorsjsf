@@ -5,7 +5,43 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:outputLabel value="Hello, world"/>
-   </f:view>
+  <ui:include src="head.xhtml"/>
+  
+  <h:body>
+  	<ui:include src="nav.xhtml"/>
+  		<section class="container">
+            
+                <h1 class="large text-primary">Developers</h1>
+                <p class="lead">
+                    <i class="fab fa-connectdevelop"></i>
+                    Browse and connect with developers
+                </p>
+                <div class="profiles">
+                   <ui:repeat var="" value="">
+                       <div class="profile bg-light">
+	                      <!--   <img src={avatar} alt="" class="round-img" />-->
+				            <div>
+				                <h2>{name}</h2>
+				                <p>{status} {company && <span>at {company}</span>}</p>
+				                <p class="my-1">{location && <span>{location}</span>}</p>
+				                <h:commandLink action="" value="View profile" class="btn btn-primary"/>
+				            </div>
+				            <ul>
+				                
+				                <ui:repeat var="" value="">
+					                <li class='text-primary'>
+					                    <i class="fas fa-check"></i>{skill}
+					                </li>
+				                </ui:repeat>
+				          
+				            </ul>
+	        			</div>
+	                  </ui:repeat>
+	                  <h4>No profiles found</h4>
+	               </div>
+       
+       }
+        </section>
+  		D:\Udemy\Ionic\ionic+react\09-handling user input\01.mp4
+  </h:body>
 </html>
