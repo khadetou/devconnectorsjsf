@@ -86,7 +86,7 @@ public class ProfileDbUtil {
 			
 			try {
 				myConn = getConnection();
-				String sql = "SELECT profile.id, profile.company,profile.bio,profile.githubusername,profile.location, profile.skills,profile.user_id,profile.website,user.name,user.email,user.avatar,social.id as social_id,social.facebook, social.instagram,social.linkedin,social.twitter,social.youtube FROM profile INNER JOIN user ON profile.user_id = user.id LEFT JOIN social ON social.profile_id = profile.id  WHERE user.email=?";
+				String sql = "SELECT profile.id, profile.company, profile.status, profile.bio,profile.githubusername,profile.location, profile.skills,profile.user_id,profile.website,user.name,user.email,user.avatar,social.id as social_id,social.facebook, social.instagram,social.linkedin,social.twitter,social.youtube FROM profile INNER JOIN user ON profile.user_id = user.id LEFT JOIN social ON social.profile_id = profile.id  WHERE user.email=?";
 				
 				myStmt = myConn.prepareStatement(sql);
 				
@@ -187,7 +187,7 @@ public class ProfileDbUtil {
 			}
 		}
 		
-		//GET ALL PROFILES 
+		
 		//GET ALL PROFILES
 		public	List<Profile> getProfiles() throws Exception{
 			List<Profile> profiles = new ArrayList<>();
@@ -199,7 +199,7 @@ public class ProfileDbUtil {
 			try {
 				myConn = getConnection();
 				
-				String sql = "SELECT * FROM profile LEFT JOIN socials ON profile.id = profile_id";
+				String sql = "SELECT profile.id, profile.company,  profile.status, profile.bio,profile.githubusername,profile.location, profile.skills,profile.user_id,profile.website,user.name,user.email,user.avatar,social.id as social_id,social.facebook, social.instagram,social.linkedin,social.twitter,social.youtube FROM profile INNER JOIN user ON profile.user_id = user.id LEFT JOIN social ON social.profile_id = profile.id";
 				
 				myStmt = myConn.createStatement();
 				myRs = myStmt.executeQuery(sql);
@@ -237,6 +237,9 @@ public class ProfileDbUtil {
 				close(myConn, myStmt, myRs);
 			}
 		}
+		
+		
+		//GET A SINGLE PROFILE
 		
 		//CREATE AN EXPERIENCE PROFILE
 		
