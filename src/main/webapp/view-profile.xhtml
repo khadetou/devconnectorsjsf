@@ -9,6 +9,55 @@
   <body>
   		<ui:include src="nav.xhtml"/>
   		
-  		<h1>#{profile.name}</h1>
+  		 <section class="container">
+         
+     
+                <h:link class="btn btn-light" outcome="profiles.xhtml" value="Back To Profile"/>
+         		<!--  <h:link outcome="edit-profile.xhtml" className="btn btn-dark"/>-->
+        
+    
+            <div class="profile-grid my-1">
+                <ui:include src="profile-top.xhtml"/>
+                <div class="profile-about bg-light p-2">
+      
+                    <h2 class="text-primary">#{profile.name}'s Bio</h2>
+                    <p>
+                        #{profile.bio}
+                    </p>
+             
+           
+            
+            <div class="line"></div>
+            <h2 class="text-primary">Skill Set</h2>
+            <div class="skills">
+               
+                    <div  class="p-1"><i class="fa fa-check"></i>#{profile.skills}</div>
+          
+            </div>
+      </div>
+                <div class="profile-exp bg-white p-2">
+                    <h2 class="text-primary">Experience</h2>
+                 
+                   
+                    
+                 <!-- <ProfileExperience key={exp._id} experience ={exp} /> -->
+                    
+                    
+                  <h4>No experience credentials</h4>
+                </div>
+
+                <div class="profile-edu bg-white p-2">
+                    <h2 class="text-primary">Education</h2>
+                  
+                    
+                        
+                           <!--   <ProfileEducation key={edu._id} education ={edu} />-->
+             
+                   <h4>No experience credentials</h4>
+                </div>
+
+                <!--  <ProfileGithub username={profile.githubusername}/>-->
+            </div>
+        </section>
   </body>
 </html>
