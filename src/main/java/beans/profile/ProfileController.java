@@ -2,12 +2,14 @@ package beans.profile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
@@ -68,6 +70,33 @@ public class ProfileController {
 			addErrorMessage(exc);
 		}
 	}
+	
+	
+	//GET A SINGLE PROFILE
+	public String loadProfile(int profileId) {
+		//GET PROFILE AND PUT IT IN THE REQUEST
+		logger.info("loading profile: "+profileId);
+		try { 
+			//Get profile form database
+			Profile  theProfile = profileDbUtil.getProfile(profileId);
+			
+			//Put in the request attribute 
+			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+			
+			Map<String, Object> requestMap = externalContext.getRequestMap();
+			requestMap.put("profile", theProfile);
+			
+		}catch(Exception exc) {
+			//Send this to server logs
+			logger.log(Level.SEVERE, "Error loading profile id:" + profileId);
+			//Add error message for JSF page
+			addErrorMessage(exc);
+			return null;
+		}
+		
+		return "view-profile.xhtml";
+	}
+	
 	
 	//ERROR MESSAGE HANDLER
 	private void addErrorMessage(Exception exc) {
