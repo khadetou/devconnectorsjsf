@@ -24,7 +24,9 @@
                 <div class="profiles">
                    <ui:repeat var="item" value="#{profileController.profiles}">
                        <div class="profile bg-light">
-	                      <!--   <img src={avatar} alt="" class="round-img" />-->
+                  			<h:graphicImage rendered="#{profile.avatar == null}" class="round-img" value="/resources/img/gravatar.png"/>
+                  			<h:graphicImage rendered="#{profile.avatar != null}" class="round-img" value="#{profile.avatar}"/>
+	                      
 				            <div>
 				                <h2>#{item.name}</h2>
 				                <p>#{item.status} <span>at #{item.company}</span></p>
