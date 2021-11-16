@@ -293,7 +293,65 @@ public class ProfileDbUtil {
 		
 		//CREATE AN EXPERIENCE PROFILE
 		
+		public void createExperience(Experience theExp) throws Exception {
+			Connection myConn = null;
+			PreparedStatement myStmt = null;
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+			String email = (String) session.getAttribute("uemail");
+			try {
+				myConn = getConnection();
+				
+				String sql = "INSERT INTO experience (user_id, profile_id, title, company, location, fromStart, toend, current, description) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				
+				myStmt = myConn.prepareStatement(sql);
+				
+				//SET PARAMS
+				myStmt.setInt(1, getCurrentProfile(email).getId());
+				myStmt.setString(2, theExp.getTitle());
+				myStmt.setString(3, theExp.getCompany());
+				myStmt.setString(4, theExp.getLocation());
+				myStmt.setString(5, theExp.getFromstart());
+				myStmt.setString(6, theExp.getToend());
+				myStmt.setString(7, theExp.getCurrent());
+				myStmt.setString(8, theExp.getDescription());
+				
+				myStmt.execute();
+			}
+			finally {
+				close(myConn, myStmt);
+			}
+		}
+		
 		//CREATE AN EDUCATION PROFILE 
+		
+		public void createEducation(Education education) throws Exception {
+			Connection myConn = null;
+			PreparedStatement myStmt = null;
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+			String email = (String) session.getAttribute("uemail");
+			try {
+				myConn = getConnection();
+				
+				 String sql = "insert into education (profile_id, school, degree, fieldofstudy, fromstart, toend, current, description) values (?, ?, ?, ?, ?, ?, ?, ?)";
+				
+				myStmt = myConn.prepareStatement(sql);
+				
+				//SET PARAMS
+				myStmt.setInt(1, getCurrentProfile(email).getId());
+				myStmt.setString(1, education.getSchool());
+	            myStmt.setString(2, education.getDegree());
+	            myStmt.setString(3, education.getFieldofstudy());
+	            myStmt.setString(4, education.getFromStart());
+	            myStmt.setString(5, education.getToEnd());
+	            myStmt.setString(6, education.getCurrent());
+	            myStmt.setString(7, education.getDescription());
+	            
+	            myStmt.execute();
+			}
+			finally {
+				close(myConn, myStmt);
+			}
+		}
 		
 		//GET USER REPOS FROM GITHUB
 		
