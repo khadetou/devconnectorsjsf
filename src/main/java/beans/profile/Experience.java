@@ -13,6 +13,11 @@ public class Experience {
 	    private String toend;
 	    private String current;
 	    private String description;
+	    
+	    
+	    public Experience() {
+	    	
+	    }
 
 	    public Experience(int id, int profiel_id, String title, String company, String location, String fromstart, String toend, String current, String description) {
 	        this.id = id;

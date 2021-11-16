@@ -13,6 +13,10 @@ public class Education {
     private String toEnd;
     private String current;
     private String description;
+    
+    public Education() {
+    	
+    }
 
     public Education(int id, int profile_id, String school, String degree, String fieldofstudy, String fromStart, String toEnd, String current, String description) {
         this.id = id;

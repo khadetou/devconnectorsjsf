@@ -97,6 +97,26 @@ public class ProfileController {
 		return "view-profile.xhtml";
 	}
 	
+	//CREATE EDUCATION
+		public String createEducation(Education education) {
+			logger.info("Adding education: "+ education);
+			try {
+				//ADD PROFILE TO THE DATABASE
+				profileDbUtil.createEducation(education);
+				
+			}catch(Exception exc) {
+				//SEND THIS TO SERVER LOGS
+				logger.log(Level.SEVERE, "Error adding profile", exc);
+				
+				//ADD ERROR MESSAGE FOR JSF PAGE
+				addErrorMessage(exc);
+				
+				return null;
+			}
+			
+			return "auth/dashboard.xhtml?faces-redirect=true";
+		}
+	
 	
 	//ERROR MESSAGE HANDLER
 	private void addErrorMessage(Exception exc) {

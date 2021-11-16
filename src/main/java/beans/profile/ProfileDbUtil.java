@@ -386,7 +386,7 @@ public class ProfileDbUtil {
 			    	close(myConn, myStmt);
 			    }
 
-			   }
+			}
 		
 		//DELETE EDUCATION
 	    public void deleteEducation(int id) throws Exception{
