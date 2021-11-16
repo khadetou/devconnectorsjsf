@@ -20,10 +20,12 @@
                     <i class="fab fa-connectdevelop"></i>
                     Browse and connect with developers
                 </p>
-              
+              	#{profileController.profiles}
                 <div class="profiles">
+                
                    <ui:repeat var="item" value="#{profileController.profiles}">
                        <div class="profile bg-light">
+                       	 <h:panelGroup rendered="#{profile.email == null}">
                   			<h:graphicImage rendered="#{profile.avatar == null}" class="round-img" value="/resources/img/gravatar.png"/>
                   			<h:graphicImage rendered="#{profile.avatar != null}" class="round-img" value="#{profile.avatar}"/>
 	                      
@@ -44,12 +46,18 @@
 				                </ui:repeat>
 				          
 				            </ul>
+				            
+				         </h:panelGroup>
+				          <h:panelGroup rendered="#{profile.email != null}">
+		              		<h4>No profiles found</h4>
+		              	</h:panelGroup>  
 	        			</div>
 	                  </ui:repeat>
-	                  <h4>No profiles found</h4>
+	                  
+	              
+		            
 	               </div>
-       
-  
+     
         </section>
 
   </h:body>

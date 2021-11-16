@@ -10,14 +10,12 @@
    
    <ui:component>
    		
-   		  <div class="profile-top bg-primary p-2">
+    <div class="profile-top bg-primary p-2">
    		
    		  	
-        <!-- <img
-          className="round-img my-1"
-          src={avatar}
-          alt=""
-        />-->
+       <h:graphicImage rendered="#{profile.avatar == null}" class="round-img" value="/resources/img/gravatar.png"/>
+       <h:graphicImage rendered="#{profile.avatar != null}" class="round-img" value="#{profile.avatar}"/>
+	                      
         <h1 class="large">#{profile.name}</h1>
         <p class="lead">#{profile.status} <span>#{profile.company}</span></p>
         <p> <span>#{profile.location}</span></p>
