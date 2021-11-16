@@ -356,14 +356,80 @@ public class ProfileDbUtil {
 		//GET USER REPOS FROM GITHUB
 		
 		//DELETE PROFILE
+		  public void deleteProfile(int id) throws Exception{
+		        Connection myConn = null;
+		        PreparedStatement myStmt = null;
+		        try{
+		            myConn = getConnection();
+		            String sql = "delete from profile where id = ?";
+		            myStmt = myConn.prepareStatement(sql);
+		            myStmt.setInt(1, id);
+		            myStmt.execute();
+		        }finally{
+		        	close(myConn, myStmt);
+		        }
+		    }
+
 		
 		//DELETE EXPERIENCE
+		  public void deleteExperience(int id) throws Exception{
+			    Connection myConn = null;  
+			    PreparedStatement myStmt = null;
+
+			    try{
+			      myConn = getConnection();
+			      String sql = "delete from experience where id = ?";
+			      myStmt = myConn.prepareStatement(sql);
+			      myStmt.setInt(1, id);
+			      myStmt.execute();
+			    }finally{
+			    	close(myConn, myStmt);
+			    }
+
+			   }
 		
 		//DELETE EDUCATION
+	    public void deleteEducation(int id) throws Exception{
+	        Connection myConn = null;
+	        PreparedStatement myStmt = null;
+	        try{
+	        	myConn = getConnection();
+	            String sql = "delete from education where id = ?";
+	            myStmt = myConn.prepareStatement(sql);
+	            myStmt.setInt(1, id);
+	            myStmt.execute();
+	           
+	        }finally {
+				close (myConn, myStmt);
+			}
+	        
+	    }
 		
 		//UPDATE PROFILE
 		
-		
+	    public void updateProfile(Profile profile) throws Exception{
+	        Connection myConn = null;
+	        PreparedStatement myStmt = null;
+	        try{
+	            myConn = getConnection();
+	            String sql = "update profile set company = ?, website = ?, location = ?, status = ?, skills = ?,  bio = ?, githubusername = ? where id = ?";
+	            myStmt = myConn.prepareStatement(sql);
+	            myStmt.setString(1, profile.getCompany());
+	            myStmt.setString(2, profile.getWebsite());
+	            myStmt.setString(3, profile.getLocation());
+	            myStmt.setString(4, profile.getStatus());
+	            myStmt.setString(5, profile.getSkills());
+	            myStmt.setString(5, profile.getBio());
+	            myStmt.setString(5, profile.getGithubusername());
+	            myStmt.setInt(6, profile.getId());
+	            myStmt.execute();
+	        }finally{
+	        	close (myConn, myStmt);
+	        }
+	    }
+	    
+	    
+	    
 		
 		//GET CONNECTION
 		private Connection getConnection() throws Exception {
